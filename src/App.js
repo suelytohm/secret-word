@@ -1,4 +1,3 @@
-
 // CSS
 import './App.css';
 
@@ -20,7 +19,6 @@ const stages = [
 ];
 
 const guessesQty = 5;
-
 
 function App() {
 
