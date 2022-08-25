@@ -59,6 +59,8 @@ function App() {
   const startGame = useCallback(() => {    
     // Clear all letters
     clearLetterStates();
+    setGuesses(guessesQty);
+
     // pick word and pick category
     const { word, category } = pickWordAndPickCategory(); 
 
