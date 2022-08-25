@@ -17,13 +17,10 @@ const Game = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    console.log(letter);
     verifyLetter(letter);
     setLetter("");
 
     letterImputRef.current.focus();
-
-
 
   }
 

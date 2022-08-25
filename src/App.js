@@ -10,12 +10,15 @@ import {wordsList} from "./data/words";
 // Components
 import StartScreen  from "./components/StartScreen";
 import GameOver from './components/GameOver';
+import GameWin from './components/GameWin';
 import Game from './components/Game';
 
 const stages = [
   { id: 1, name: "start" },
   { id: 2, name: "game" },
   { id: 3, name: "end" },
+  { id: 4, name: "win" },
+
 ];
 
 const guessesQty = 5;
@@ -46,6 +49,7 @@ function App() {
     const word = words[category][Math.floor(Math.random() * words[category].length)] // Sorteio do index da palavra, referente a categoria sorteada acima
 
     return { category, word };
+    
   }, [words]);
 
   // Starts the secret word game
@@ -123,14 +127,17 @@ function App() {
     // win condition
     if(guessedLetters.length === uniqueLetters.length) {
       // add score
+      
       setScore((actualScore) => (actualScore += 100));
 
       // restart game with new word
       startGame();
+      // setGameStage(stages[3].name);
+
     }
 
 
-  }, [guessedLetters, letters, startGame]);
+  }, [guessedLetters, letters, score, startGame]);
 
 
 
@@ -157,7 +164,8 @@ function App() {
           guesses={guesses}
           score={score}
         />}
-      { gameStage === "end" && <GameOver retry={retry} score={score} />}
+      { gameStage === "win" && <GameWin score={score} /> }  
+      { gameStage === "end" && <GameOver retry={retry} score={score} pickedWord={pickedWord} />}
       
     </div>
   );
