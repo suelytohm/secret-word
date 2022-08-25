@@ -1,8 +1,11 @@
 // CSS
 import './App.css';
+import 'react-notifications-component/dist/theme.css'
 
 // React
 import { useCallback, useEffect, useState} from "react";
+import { ReactNotifications } from 'react-notifications-component';
+import { Store } from 'react-notifications-component';
 
 // data
 import {wordsList} from "./data/words";
@@ -88,12 +91,12 @@ function App() {
       return;
     }
 
-    // Push guessed letter or remove a guess
+    // Push guessed letter or remove a chance
     
     if(letters.includes(normalizedLetter)) {
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
-        normalizedLetter,
+        letter,
       ])
     } else {
       setWrongLetters((actualWrongLetters) => [
@@ -149,9 +152,25 @@ function App() {
     setGameStage(stages[0].name);
   }
 
+  const notification = (title) => {
+    Store.addNotification({
+      title: title,
+      message: "",
+      type: "success",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true
+      }
+    });
+  }
 
   return (
     <div className="App">
+      <ReactNotifications />
       { gameStage === "start" && <StartScreen startGame={startGame} />}
       { gameStage === "game" && 
         <Game 

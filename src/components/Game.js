@@ -26,9 +26,10 @@ const Game = ({
 
   return (
       <div className="game">
+        {/** 
           <p className="points">
             <span>Pontuação: {score}</span>
-          </p>
+          </p>*/}
           <h2>Adivinhe a palavra:</h2>
           <h3 className="tip">
             Dica da palavra: <span>{pickedCategory}</span>
@@ -54,6 +55,7 @@ const Game = ({
                 name="letter" 
                 maxLength="1" 
                 required 
+                autoFocus 
                 onChange={(e) => setLetter(e.target.value)} 
                 value={letter} 
                 ref={letterImputRef} 
