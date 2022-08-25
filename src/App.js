@@ -97,7 +97,7 @@ function App() {
         normalizedLetter,
       ]);
 
-      setGuesses((actualGuesses) => actualGuesses -1);
+      setGuesses((actualGuesses) => actualGuesses - 1);
     }
   };
 
@@ -145,7 +145,7 @@ function App() {
 
   return (
     <div className="App">
-      { gameStage === "start" && <StartScreen startGame={startGame}  />}
+      { gameStage === "start" && <StartScreen startGame={startGame} />}
       { gameStage === "game" && 
         <Game 
           verifyLetter={verifyLetter} 
