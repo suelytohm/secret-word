@@ -91,12 +91,12 @@ function App() {
       return;
     }
 
-    // Push guessed letter or remove a chance
+    // Push guessed letter or remove a guess
     
     if(letters.includes(normalizedLetter)) {
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
-        letter,
+        normalizedLetter,
       ])
     } else {
       setWrongLetters((actualWrongLetters) => [
@@ -129,6 +129,7 @@ function App() {
 
     // win condition
     if(guessedLetters.length === uniqueLetters.length) {
+      
       // add score
       
       setScore((actualScore) => (actualScore += 100));
