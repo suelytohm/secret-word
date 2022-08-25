@@ -52,6 +52,6 @@
     margin-right: 1em;
 }
 
-.input {
-    color: #ecfa00;
-}
+input[type=text]:focus {
+    background-color: lightblue;
+  }
